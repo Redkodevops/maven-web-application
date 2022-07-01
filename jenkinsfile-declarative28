@@ -1,0 +1,81 @@
+pipeline{
+    agent any
+    tools {
+        maven "mymaven"
+    }
+    stages {
+        stage('1cloning'){
+            steps {
+                sh 'echo "apps latest version committed"'
+                git "https://github.com/Redkodevops/maven-web-application.git"
+            }
+        }
+        stage('2Build'){
+            steps {
+                sh 'echo "code is building"'
+                sh "mvn clean package"
+            }
+        }
+        stage('3CodeQuality'){
+            steps {
+                sh 'echo "Checking code quality"'
+                sh "mvn sonar:sonar"
+            }
+        }
+        stage('4UploadArtifact'){
+            steps {
+                sh 'echo "code is building"'
+                sh "mvn deploy"
+            }
+        }
+        stage('5Deploy-uat'){
+            steps {
+                sh 'echo job deployed uat for testing'
+                deploy adapters: [tomcat9(credentialsId: 'maven-web-app', path: '', url: 'http://34.238.119.152:8080/')], contextPath: null, war: 'target/*war'   
+            }
+        }
+        stage('6Approval'){
+            steps {
+                timeout(time:9, unit:'HOURS'){
+                    input message: 'App ready for deployment please reveiw and approve'
+                }
+            }
+        }
+        stage('7Deploy-pre-prod'){
+            steps {
+               sh 'echo job is ready for deployment to pre-prod' 
+               deploy adapters: [tomcat9(credentialsId: 'maven-web-app', path: '', url: 'http://34.238.119.152:8080/')], contextPath: null, war: 'target/*war'   
+            }
+        }
+    }
+    post {
+        always{ 
+            emailext body: '''Hi,
+
+This is an ebay application job
+
+Regards,
+Redkotech 
+2535458354''', recipientProviders: [buildUser(), developers(), requestor()], subject: 'Job status'
+        }
+        success{
+            emailext body: '''Hi,
+
+This job is successful
+
+Regards,
+Redkotech 
+2535458354''', recipientProviders: [buildUser(), developers(), requestor()], subject: 'Job status'
+        }
+        failure{
+            emailext body: '''Hi,
+
+This job failed
+Please review and troubleshoot
+
+Regards,
+Redkotech 
+2535458354''', recipientProviders: [buildUser(), developers(), requestor()], subject: 'Job status'
+        }
+    }
+}
