@@ -97,7 +97,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://172.31.25.141:8081/repository/nokia-releases</url>
+	      <url>http://172.31.25.141:8081/repository/nokia-release</url>
 	    </repository>
 	    
 	    <snapshotRepository>
@@ -108,7 +108,7 @@
 	    
 	</distributionManagement>
 	
-	<distributionManagement>
+	<distributionManagement1>
 	 <repository>
 	      <id>nexus</id>
 	      <name> Technologies Releases Nexus Repository</name>
@@ -120,7 +120,7 @@
 	      <name>Redkotech Technologies Snapshot Nexus Repository </name>
 	      <url>http://172.31.85.240:8081/repository/samsung-snapshot/</url>
 	    </snapshotRepository>
-	</distributionManagement>
+	</distributionManagement1>
 	
 	<build>
 		<finalName>maven-web-app</finalName>
