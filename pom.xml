@@ -106,17 +106,20 @@
 	      <url>http://172.31.25.141:8081/repository/nokia-snapshot/</url>
 	    </snapshotRepository>
 	    
-		<repository2>
+	</distributionManagement>
+	
+	<distributionManagement>
+	 <repository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Releases Nexus Repository</name>
+	      <name> Technologies Releases Nexus Repository</name>
 	      <url>http://172.31.85.240:8081/repository/samsung-releases</url>
-	    </repository2>
+	    </repository>
 		
-		<snapshotRepository2>
+		<snapshotRepository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Snapshot Nexus Repository </name>
+	      <name>Redkotech Technologies Snapshot Nexus Repository </name>
 	      <url>http://172.31.85.240:8081/repository/samsung-snapshot/</url>
-	    </snapshotRepository2>
+	    </snapshotRepository>
 	</distributionManagement>
 	
 	<build>
