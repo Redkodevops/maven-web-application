@@ -5,7 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.1</version>
 	
 	<name>maven-web-application</name>
 
@@ -107,20 +107,6 @@
 	    </snapshotRepository>
 	    
 	</distributionManagement>
-	
-	<distributionManagement1>
-	 <repository>
-	      <id>nexus</id>
-	      <name> Technologies Releases Nexus Repository</name>
-	      <url>http://54.175.173.82:8081/repository/samsung-release/</url>
-	    </repository>
-		
-		<snapshotRepository>
-	      <id>nexus</id>
-	      <name>Redkotech Technologies Snapshot Nexus Repository </name>
-	      <url>http://172.31.85.240:8081/repository/samsung-snapshot/</url>
-	    </snapshotRepository>
-	</distributionManagement1>
 	
 	<build>
 		<finalName>maven-web-app</finalName>
